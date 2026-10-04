@@ -139,6 +139,12 @@
     <label>Flights (hours/month)</label>
     <input type="number" id="flight" placeholder="Example: 2">
 
+    <label>Food Consumption (servings/month)</label>
+    <input type="number" id="food" placeholder="Example: 30">
+
+    <label>Shopping Spend (₹/month)</label>
+    <input type="number" id="shopping" placeholder="Example: 5000">
+
     <button onclick="calculateCarbon()">
       Calculate Carbon Footprint
     </button>
@@ -169,10 +175,8 @@
     <h2>About the Project</h2>
     <p>
       This Carbon Footprint Calculator helps users estimate their
-      monthly carbon dioxide emissions from electricity usage and
-      transportation. The project promotes awareness about climate
-      change and encourages people to adopt environmentally friendly
-      habits.
+      monthly carbon dioxide emissions from electricity usage,
+      transportation, food, and shopping.
     </p>
   </div>
 
@@ -200,19 +204,29 @@ function calculateCarbon() {
   let flight =
     Number(document.getElementById("flight").value) || 0;
 
+  let food =
+    Number(document.getElementById("food").value) || 0;
+
+  let shopping =
+    Number(document.getElementById("shopping").value) || 0;
+
   // Approximate emission factors
   let electricityEmission = electricity * 0.7;
   let carEmission = car * 0.21;
   let busEmission = bus * 0.08;
   let trainEmission = train * 0.04;
   let flightEmission = flight * 90;
+  let foodEmission = food * 2.5;
+  let shoppingEmission = shopping * 0.0005;
 
   let total =
     electricityEmission +
     carEmission +
     busEmission +
     trainEmission +
-    flightEmission;
+    flightEmission +
+    foodEmission +
+    shoppingEmission;
 
   document.getElementById("total").innerText =
     total.toFixed(2);
