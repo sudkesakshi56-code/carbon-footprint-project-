@@ -1,0 +1,173 @@
+# carbon-footprint-project-
+carbon footprint calculator project 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon Footprint Calculator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef7f0;
+  color: #183b22;
+}
+
+header {
+  background: #176b3a;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+header p {
+  margin: 0;
+}
+
+.container {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 15px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #176b3a;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #176b3a;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0e512b;
+}
+
+#result {
+  display: none;
+  text-align: center;
+}
+
+.result-number {
+  font-size: 35px;
+  font-weight: bold;
+  color: #176b3a;
+}
+
+.tip {
+  background: #e1f3e6;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌱 Carbon Footprint Calculator</h1>
+  <p>Calculate your approximate monthly carbon footprint</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Enter Your Details</h2>
+
+    <label>🚗 Car travel per month (km)</label>
+    <input type="number" id="car" placeholder="Example: 500">
+
+    <label>🚌 Public transport per month (km)</label>
+    <input type="number" id="bus" placeholder="Example: 200">
+
+    <label>⚡ Electricity usage per month (kWh)</label>
+    <input type="number" id="electricity" placeholder="Example: 150">
+
+    <label>✈️ Flights per year</label>
+    <input type="number" id="flights" placeholder="Example: 2">
+
+    <label>🥩 Meat consumption per week (kg)</label>
+    <input type="number" id="meat" placeholder="Example: 2">
+
+    <button onclick="calculate()">Calculate Carbon Footprint</button>
+  </div>
+
+  <div class="card" id="result">
+    <h2>Your Estimated Carbon Footprint</h2>
+
+    <div class="result-number">
+      <span id="total">0</span> kg CO₂/month
+    </div>
+
+    <p id="message"></p>
+
+    <div class="tip">
+      🌳 <strong>Tip:</strong> Use public transport, save electricity,
+      reduce unnecessary travel and choose more plant-based food.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Carbon Footprint Project
+</footer>
+
+<script>
+function calculate() {
+
+  let car = Number(document.getElementById("car").value) || 0;
+  let bus = Number(document.getElementById("bus").value) || 0;
+  let electricity = Number(document.getElementById("electricity").value) || 0;
+  let flights = Number(document.getElementById("flights").value) || 0;
+  let meat = Number(document.getElementById("meat").value) || 0;
+
+  // Approximate emission factors
